@@ -1,0 +1,26 @@
+scalar DateTime
+
+type BankAccount {
+    accountNumber: ID!
+    balanceAmount: Float
+    creationDate: DateTime
+    lastUpdateDate: DateTime
+}
+
+input BankAccountRequest {
+    accountNumber: ID!
+    balanceAmount: Float
+}
+
+type Query {
+    getBalance(accountNumber: ID!):Float
+}
+
+type Mutation {
+    create(dto: BankAccountRequest!):BankAccount
+
+    deposit(dto: BankAccountRequest!):Boolean
+
+    withdraw(dto: BankAccountRequest!):Boolean
+}
+
